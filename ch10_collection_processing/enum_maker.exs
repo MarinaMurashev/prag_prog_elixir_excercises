@@ -53,4 +53,20 @@ defmodule EnumMaker do
   defp split([], count, first, second) do
     { first, second }
   end
+
+  def take(collection, count) do
+    take(collection, count, [])
+  end
+
+  defp take(collection, count, result) when length(collection) == count do
+    collection
+  end
+
+  defp take([head | tail], count, result) when length(result) < count do
+    take(tail, count, result ++ [head])
+  end
+
+  defp take([head | tail], count, result) when length(result) == count do
+    result
+  end
 end
