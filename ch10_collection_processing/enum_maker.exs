@@ -37,4 +37,20 @@ defmodule EnumMaker do
   defp filter_with_fun([], fun, current) do
     current
   end
+
+  def split(collection, count) do
+    split(collection, count, [], [])
+  end
+
+  defp split([head | tail], count, first, second) when length(first) < count do
+    split(tail, count, first ++ [head], second)
+  end
+
+  defp split([head | tail], count, first, second) when length(first) >= count do
+    split(tail, count, first, second ++ [head])
+  end
+
+  defp split([], count, first, second) do
+    { first, second }
+  end
 end
