@@ -12,4 +12,8 @@ defmodule Strings do
       all_asci?(tail)
     end
   end
+
+  def anagram?(word1, word2) do
+    Enum.sum(word1) == Enum.sum(word2)
+  end
 end
