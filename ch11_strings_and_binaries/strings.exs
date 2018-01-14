@@ -29,10 +29,10 @@ defmodule Strings do
     calculate(operator, first_value, second_value)
   end
 
-  defp calculate(operator, n1, n2) when operator == "+", do: n1 + n2
-  defp calculate(operator, n1, n2) when operator == "-", do: n1 - n2
-  defp calculate(operator, n1, n2) when operator == "*", do: n1 * n2
-  defp calculate(operator, n1, n2) when operator == "/", do: n1 / n2
+  defp calculate("+", n1, n2), do: n1 + n2
+  defp calculate("-", n1, n2), do: n1 - n2
+  defp calculate("*", n1, n2), do: n1 * n2
+  defp calculate("/", n1, n2), do: n1 / n2
 
   defp string_to_int(results, i) do
     { result, _ } = Enum.at(results, i) |> Integer.parse()
