@@ -4,15 +4,11 @@ defmodule FizzBuzz do
   end
 
   defp fizzbuzz(n) do
-    case n do
-      n when rem(n, 3) == 0 and rem(n, 5) == 0 ->
-        "FizzBuzz"
-      n when rem(n, 3) == 0 ->
-        "Fizz"
-      n when rem(n, 5) == 0 ->
-        "Buzz"
-      _ ->
-        n
+    case { rem(n, 3), rem(n, 5) } do
+      { 0, 0 } -> "FizzBuzz"
+      { 0, _ } -> "Fizz"
+      { _, 0 } -> "Buzz"
+      _ ->  n
     end
   end
 end
