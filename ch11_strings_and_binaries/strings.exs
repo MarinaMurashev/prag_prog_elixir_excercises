@@ -38,4 +38,18 @@ defmodule Strings do
     { result, _ } = Enum.at(results, i) |> Integer.parse()
     result
   end
+
+  def center(list) do
+    longest_word = Enum.max_by(list, &String.length/1)
+    max_word_length_center_element = center_element(longest_word) - 1
+
+    for word <- list do
+      pad_amount = max_word_length_center_element - center_element(word)
+      IO.puts(String.pad_leading(word, pad_amount + String.length(word)))
+    end
+  end
+
+  defp center_element(word) do
+    Integer.floor_div(String.length(word), 2)
+  end
 end
