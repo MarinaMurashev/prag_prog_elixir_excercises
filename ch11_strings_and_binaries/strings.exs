@@ -20,7 +20,7 @@ defmodule Strings do
   def calculate(expression) do
     regex = ~r{(\d+)\s([+-\\*\/])\s(\d+)}
 
-    [original | results] = Regex.run(regex, to_string(expression))
+    [_ | results] = Regex.run(regex, to_string(expression))
 
     first_value = string_to_int(results, 0)
     operator = Enum.at(results, 1)
@@ -51,5 +51,11 @@ defmodule Strings do
 
   defp center_element(word) do
     Integer.floor_div(String.length(word), 2)
+  end
+
+  def capitalize_sentences(string) do
+    String.split(string, ". ")
+      |> Enum.map(&String.capitalize/1)
+      |> Enum.join(". ")
   end
 end
